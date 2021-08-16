@@ -1,6 +1,6 @@
 # RL-Reinforcement-Learning
-# Обучение с подкреплением
-## Целью написания этой статьи является коротко рассказать об обучении с подкреплением, дать описание англоязычным терминам, используемым в RL, в том значении, как они используются в функциональном API TensorFlow.
+## Обучение с подкреплением
+### Целью написания этой статьи является коротко рассказать об обучении с подкреплением, дать описание англоязычным терминам, используемым в RL, в том значении, как они используются в функциональном API TensorFlow.
 
 Главными действующими лицами в RL являются агент (agent) и среда (environment). Среда - это мир, где обитает агент и с которой он взаимодействует. Взаимодействие осуществляется пошагово. На каждом шаге агент видит наблюдение (observation) или состояние (state) среды, и принимает решение, какое действие (action) предпринять. Выполняя наблюдение (observation), агент не всегда может видеть состояние среды или среду целиком. Скажем, в карточной игре, агент не может видеть карты соперника или карты в колоде. Если использоовать эту аналогию, то средой (environment) будут карты на руках у игроков и в колоде, а наблюдением (observation) агента - только карты, которые вскрыты. Продолжая аналогию карточной игры, шаг игры состоит из ходов игроков. После каждого хода меняется состояние (state) среды, и меняется наблюдение игрока. Таким образом, среда, состояние среды может меняться как под воздействием игрока, так и без его участия.
 
@@ -15,12 +15,13 @@
 Пространство действий (action space);
 Политики (policies);
 Траектории (trajectories);
-different formulations of return,
-the RL optimization problem,
-and value functions.
-States and Observations
-A state s is a complete description of the state of the world. There is no information about the world which is hidden from the state. An observation o is a partial description of a state, which may omit information.
+Различные формулировки результата (different formulations of return);
+Оптимизация обучения с подкреплением (RL optimization problem);
+Функции (value functions).
 
-In deep RL, we almost always represent states and observations by a real-valued vector, matrix, or higher-order tensor. For instance, a visual observation could be represented by the RGB matrix of its pixel values; the state of a robot might be represented by its joint angles and velocities.
+### Состояния и наблюдения / States and Observations
+Состояние (state)  s является полным описанием среды. Никакая другой информации о среде не имеется. Наблюдение (observation) может не содержать в себе всю информацию о среде, то есть может являться лишь частичным описанием среды.
 
-When the agent is able to observe the complete state of the environment, we say that the environment is fully observed. When the agent can only see a partial observation, we say that the environment is partially observed.
+В глубоком обучении с подкреплением (deep RL) состояния среды или наблюдения являются численным вектром (1D), матрицей (2D), в случае большего количества измерений мы называем это тензором. Например, наблюдение в виде изображения может бють представлено в виде RGB матриц значений пикселов, состояние робота может быть описано вектором, состоящим из значений  положений его частей и/или скорости их движения.
+
+Когда агент в наблюдении видит полное состояние среды, это называется "полностью наблюдаемой средой" (fully observed environment). Когда агент в наблюдении видитлишь какую-то часть состояния среды, это называется "частично наблюдаемой средой" (partially observed environment).
